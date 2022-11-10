@@ -1,6 +1,8 @@
 package br.com.estudo.carro2.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,10 +13,12 @@ public class Carro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	
+
 	private String nome;
 	private String urlFoto;
+
+	@Enumerated(EnumType.STRING)
+	private Tipo tipo;
 
 	public Carro() {
 	}
@@ -47,6 +51,14 @@ public class Carro {
 
 	public void setUrlFoto(String urlFoto) {
 		this.urlFoto = urlFoto;
+	}
+
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
 	}
 
 }

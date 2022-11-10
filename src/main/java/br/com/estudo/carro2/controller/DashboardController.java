@@ -6,13 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import br.com.estudo.carro2.model.Carro;
 import br.com.estudo.carro2.repository.CarroRepository;
 
 @Controller
 public class DashboardController {
-	
+
 	@Autowired
 	private CarroRepository carroRepository;
 
@@ -20,7 +21,17 @@ public class DashboardController {
 	public String dashboard(Model model) {
 		List<Carro> carros = carroRepository.findAll();
 		model.addAttribute("carros", carros);
-				
+
 		return "dashboard";
+	}
+	
+	@GetMapping("/formulario")
+	public String formulario() {
+		return "formulario";
+	}
+	
+	@PostMapping("/formulario/novo")
+	public String formularioNovo() {
+		return "formulario";
 	}
 }
