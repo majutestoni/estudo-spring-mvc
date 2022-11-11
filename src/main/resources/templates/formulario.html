@@ -11,13 +11,13 @@
 <body>
 
 	<div class="container card">
-		<form action="/formulario/novo" method="post" class="card-body">
+		<form action="/formulario/novo" th:object="${requisicaoNovo}" method="post" class="card-body">
 			<div>
-				<label>Nome: <input type="text" name="nome"/>
+				<label>Nome: <input type="text"  th:field="*{nome}"/>
 				</label>
 			</div>
 			<div>
-				<label>URL Imagem <input type="text" name="urlFoto"/>
+				<label>URL Imagem <input type="text" th:field="*{urlFoto}"/>
 				</label>
 			</div>
 			<button type="submit" class="btn btn-primary">Cadastrar</button>

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import br.com.estudo.carro2.dto.RequisicaoNovo;
 import br.com.estudo.carro2.model.Carro;
 import br.com.estudo.carro2.repository.CarroRepository;
 
@@ -24,14 +25,17 @@ public class DashboardController {
 
 		return "dashboard";
 	}
-	
+
 	@GetMapping("/formulario")
-	public String formulario() {
+	public String formulario(RequisicaoNovo requisicao) {
 		return "formulario";
 	}
-	
+
 	@PostMapping("/formulario/novo")
-	public String formularioNovo() {
+	public String formularioNovo(RequisicaoNovo requisicaoNovo) {
+
+		Carro carro = requisicaoNovo.toCarro();
+		carroRepository.save(carro);
 		return "formulario";
 	}
 }
