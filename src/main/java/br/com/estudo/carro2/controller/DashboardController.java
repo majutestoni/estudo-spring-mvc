@@ -41,12 +41,6 @@ public class DashboardController {
 		return "redirect:/dashboard";
 	}
 
-	private String aaa(@PathVariable String filtro, Model model) {
-		List<Carro> carros = carroRepository.findByTipo(Tipo.valueOf(filtro.toUpperCase()));
-		model.addAttribute("carros", carros);
-		return "dashboard";
-	}
-
 	@GetMapping("/dashboard/{filtro}")
 	public String filtrarCaminhonete(@PathVariable String filtro, Model model) {
 		List<Carro> carros = carroRepository.findByTipo(Tipo.valueOf(filtro.toUpperCase()));
