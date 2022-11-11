@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import br.com.estudo.carro2.dto.RequisicaoNovo;
 import br.com.estudo.carro2.model.Carro;
+import br.com.estudo.carro2.model.Tipo;
 import br.com.estudo.carro2.repository.CarroRepository;
 
 @Controller
@@ -36,6 +38,13 @@ public class DashboardController {
 
 		Carro carro = requisicaoNovo.toCarro();
 		carroRepository.save(carro);
-		return "formulario";
+		return "redirect:/dashboard";
+	}
+
+	@GetMapping("/dashboard/{filtro}")
+	public String filtrarCaminhonete(@PathVariable String filtro, Model model) {
+		List<Carro> carros = carroRepository.findByTipo(Tipo.valueOf(filtro.toUpperCase()));
+		model.addAttribute("carros", carros);
+		return "dashboard";
 	}
 }

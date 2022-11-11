@@ -10,18 +10,31 @@
 </head>
 <body>
 
-	<div class="container card">
-		<form action="/formulario/novo" th:object="${requisicaoNovo}" method="post" class="card-body">
-			<div>
-				<label>Nome: <input type="text"  th:field="*{nome}"/>
-				</label>
+	<div class="container">
+		<nav>
+			<div class="navbar-nav">
+				<a class="nav-item nav-link"
+					href="/dashboard">Todos</a>
+				<a class="nav-item nav-link"
+					href="/dashboard/caminhonete">caminhonete</a>
 			</div>
-			<div>
-				<label>URL Imagem <input type="text" th:field="*{urlFoto}"/>
-				</label>
-			</div>
-			<button type="submit" class="btn btn-primary">Cadastrar</button>
-		</form>
+		</nav>
+		<div class="card">
+
+			<form action="/formulario/novo" th:object="${requisicaoNovo}"
+				method="post" class="card-body">
+				<div>
+					<label>Nome: <input type="text" th:field="*{nome}" />
+					</label>
+				</div>
+				<div>
+					<label>URL Imagem <input type="text" th:field="*{urlFoto}" />
+					</label>
+				</div>
+				<button type="submit" class="btn btn-primary">Cadastrar</button>
+			</form>
+		</div>
 	</div>
+
 </body>
 </html>
